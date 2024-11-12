@@ -209,21 +209,17 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
         let parts: React.ReactNode[] = [];
         let lastIndex = 0;
 
-        const instanceId = React.useId();
-        let tokenCounter = 0;
-
         // Use matchAll to find each match and its position
         for (const match of remainingText.matchAll(regex)) {
             // Add the substring before the match
             if (match.index > lastIndex) {
                 parts.push(<TokenizedText
-                        key={`${instanceId}-before-${tokenCounter++}`}
-                        input={remainingText.slice(lastIndex, match.index)}
-                        sep={sep}
-                        animation={animation}
-                        animationDuration={animationDuration}
-                        animationTimingFunction={animationTimingFunction}
-                        animationIterationCount={1}
+                    input={remainingText.slice(lastIndex, match.index)}
+                    sep={sep}
+                    animation={animation}
+                    animationDuration={animationDuration}
+                    animationTimingFunction={animationTimingFunction}
+                    animationIterationCount={1}
                     />);
             }
             // Add the match itself - either as custom component or tokenized text
@@ -246,9 +242,7 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
                         }
                         return acc;
                     }, {});
-
                     parts.push(<TokenizedText
-                        key={`${instanceId}-component-${tokenCounter++}`}
                         input={<CustomComponent 
                             key={match.index} 
                             {...props}
@@ -263,7 +257,6 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
                 } else {
                     // For non-HTML regex matches, just pass the content
                     parts.push(<TokenizedText
-                        key={`${instanceId}-nonhtml-${tokenCounter++}`}
                         input={<CustomComponent key={match.index} content={matchText} />}
                         sep={sep}
                         animation={animation}
@@ -288,7 +281,6 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
                 
                 if (beforePartial) {
                     parts.push(<TokenizedText
-                        key={`${instanceId}-remaining-${tokenCounter++}`}
                         input={beforePartial}
                         sep={sep}
                         animation={animation}
@@ -299,7 +291,6 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
                 }
             } else {
                 parts.push(<TokenizedText
-                    key={`${instanceId}-final-${tokenCounter++}`}
                     input={remainingText.slice(lastIndex)}
                     sep={sep}
                     animation={animation}
