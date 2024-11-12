@@ -214,13 +214,13 @@ const MarkdownAnimateText: React.FC<SmoothTextProps> = ({
             // Add the substring before the match
             if (match.index > lastIndex) {
                 parts.push(<TokenizedText
-                    input={remainingText.slice(lastIndex, match.index)}
-                    sep={sep}
-                    animation={animation}
-                    animationDuration={animationDuration}
-                    animationTimingFunction={animationTimingFunction}
-                    animationIterationCount={1}
-                    />);
+                  input={remainingText.slice(lastIndex, match.index)}
+                  sep={sep}
+                  animation={animation}
+                  animationDuration={animationDuration}
+                  animationTimingFunction={animationTimingFunction}
+                  animationIterationCount={1}
+                />);
             }
             // Add the match itself - either as custom component or tokenized text
             const matchText = match[0];
