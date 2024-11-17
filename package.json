@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && cp src/components/*.css dist/components && rm -rf dist/stories && rm -rf dist/src",
+    "build": "node build.js",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -38,6 +38,7 @@
     "@types/react": "^18.3.3",
     "@types/react-syntax-highlighter": "^15.5.0",
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.24.0",
     "gh-pages": "^6.1.1",
     "postcss": "^8.4.47",
     "react": "^18.3.1",
